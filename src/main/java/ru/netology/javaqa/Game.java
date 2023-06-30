@@ -3,13 +3,14 @@ package ru.netology.javaqa;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
 
-    private ArrayList<Player> players = new ArrayList<Player>();
+    private HashMap<String, Player> players = new HashMap<String, Player>();
 
-    public void register(Player player){
-        players.add(player);
+    public void register(Player player) {
+        players.put(player.getName(), player);
     }
 
     public int round(String playerName1, String playerName2) throws NotRegisteredException {
@@ -28,12 +29,8 @@ public class Game {
         return 0;
     }
 
-    public Player findPlayerByName(String name){
-        for (Player player : players){
-            if (player.getName() == name)
-                return player;
-        }
-        return null;
+    public Player findPlayerByName(String name) {
+        return players.getOrDefault(name, null);
     }
 
 }
