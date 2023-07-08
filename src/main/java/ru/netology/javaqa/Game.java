@@ -1,14 +1,11 @@
 package ru.netology.javaqa;
 
-import jdk.jshell.spi.ExecutionControl;
-
 import java.util.ArrayList;
 
 public class Game {
-
     private ArrayList<Player> players = new ArrayList<Player>();
 
-    public void register(Player player){
+    public void register(Player player) {
         players.add(player);
     }
 
@@ -28,10 +25,11 @@ public class Game {
         return 0;
     }
 
-    public Player findPlayerByName(String name){
-        for (Player player : players){
-            if (player.getName() == name)
+    public Player findPlayerByName(String name) {
+        for (Player player : players) {
+            if (player.getName().equals(name)) {
                 return player;
+            }
         }
         return null;
     }
