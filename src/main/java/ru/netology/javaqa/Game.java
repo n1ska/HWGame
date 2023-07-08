@@ -14,8 +14,8 @@ public class Game {
     }
 
     public int round(String playerName1, String playerName2) throws NotRegisteredException {
-        Player player1 = findPlayerByName(playerName1);
-        Player player2 = findPlayerByName(playerName2);
+        Player player1 = findPlayerByNameOrNull(playerName1);
+        Player player2 = findPlayerByNameOrNull(playerName2);
 
         if ((player1 == null) || (player2 == null))
             throw new NotRegisteredException("Player is not registered");
@@ -29,8 +29,8 @@ public class Game {
         return 0;
     }
 
-    public Player findPlayerByName(String name) {
-        return players.getOrDefault(name, null);
+    public Player findPlayerByNameOrNull(String name) {
+        return players.get(name);
     }
 
 }

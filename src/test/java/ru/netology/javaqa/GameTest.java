@@ -14,7 +14,7 @@ class GameTest {
         game.register(player);
 
         Boolean expected = true;
-        Boolean actual = game.findPlayerByName(player.getName()) != null;
+        Boolean actual = game.findPlayerByNameOrNull(player.getName()) != null;
 
         Assertions.assertEquals(expected, actual);
     }
@@ -68,10 +68,9 @@ class GameTest {
         Player existPlayer = new Player(1, "User1", 100);
         game.register(existPlayer);
 
-        Assertions.assertThrows(NotRegisteredException.class,
-                () -> {
-                    game.round("User2", existPlayer.getName());
-                });
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            game.round("User2", existPlayer.getName());
+        });
     }
 
     @Test
@@ -80,10 +79,9 @@ class GameTest {
         Player existPlayer = new Player(1, "User1", 100);
         game.register(existPlayer);
 
-        Assertions.assertThrows(NotRegisteredException.class,
-                () -> {
-                    game.round(existPlayer.getName(), "User2");
-                });
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            game.round(existPlayer.getName(), "User2");
+        });
     }
 
     @Test
@@ -95,7 +93,7 @@ class GameTest {
         game.register(player2);
 
         Boolean expected = true;
-        Boolean actual = game.findPlayerByName(player2.getName()) != null;
+        Boolean actual = game.findPlayerByNameOrNull(player2.getName()) != null;
 
         Assertions.assertEquals(expected, actual);
     }
@@ -107,7 +105,7 @@ class GameTest {
         game.register(player);
 
         Boolean expected = true;
-        Boolean actual = game.findPlayerByName("User2") == null;
+        Boolean actual = game.findPlayerByNameOrNull("User2") == null;
 
         Assertions.assertEquals(expected, actual);
     }
